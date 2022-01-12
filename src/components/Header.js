@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import Button from './Button'
 
-const Header = ({scrolls,onAdd,showAdd}) => {  
+const Header = ({onAdd,showAdd}) => {  
 
   return (
     <header>
@@ -12,9 +12,7 @@ const Header = ({scrolls,onAdd,showAdd}) => {
           text= {showAdd ? 'close' : 'add'} 
           onClick={onAdd}        
         />       
-      </div>
-    
-      <h2> really.. {scrolls} when todd!</h2>
+      </div>    
     </header>
     
   )

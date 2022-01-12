@@ -1,68 +1,72 @@
 // import React from 'react' //needed jika menggunakan class
 import Header from './components/Header'
-import Tasks from './components/Tasks'
-import AddRace from './components/AddTask'
+import Citizens from './components/Citizens'
+import AddCitizen from './components/AddCitizen'
 import {useState} from 'react'
 
 
 const App =() => {
-  const [showAddRace, setShowAddRace] = useState(false);
-  const [tasks, setTasks] = useState([
+  const [showAddCitizen, setShowAddCitizen] = useState(false);
+  const [citizens, setCitizens] = useState([
     {
       id:1, 
       race:'elven',
+      name: 'Cinos Greenlock',
       attribute:'magic',
       cleaned: true,
     },{
       id:2, 
       race:'orc',
+      name: 'Handul Agamgdum',
       attribute:'physique',
       cleaned: true,
     },{
       id:3, 
       race:'nord',
+      name: 'Karlrrod Double-Fist',
       attribute:'balanced',
       cleaned: true,
     },{
       id:4,
       race:'khajiit',
+      name: 'Jikhtar',
       attribute:'speed',
       cleaned: true,
     }
   ])
 
-  //Add Task
-  const addRace = (task) => {
-    const id = Math.floor(Math.random() * 10000) + 1
-    console.log(id);
-
-    const newTask = {id,...task}
-    setTasks([...tasks,newTask]);
+  //Add Citizen
+  const addCitizen = (newCitizen) => {
+    const id = Math.floor(Math.random() * 10000) + 1 //new citizenID  
+    const finalizedNewCitizenData = {id,...newCitizen}
+    setCitizens([...citizens,finalizedNewCitizenData]);   
   }
 
-  //delete task 
-  const deleteTask = (id) => {
-    setTasks(tasks.filter((singleTask)=>singleTask.id !== id))
+  //delete Citizen
+  const deleteCitizen = (id) => {
+    setCitizens(citizens.filter((filteredCitizen)=>filteredCitizen.id !== id))
   }
 
   //reminder
   const toggleReminder = (id) => {
-    setTasks(tasks.map((task)=> task.id === id ? { ...task,cleaned: !task.cleaned} : task))
+    console.log(id);
+    setCitizens(citizens.map((singleCitizen)=> singleCitizen.id === id ? { ...singleCitizen,cleaned: !singleCitizen.cleaned} : singleCitizen))
   }
 
   return (
     <div className='container'>
       <Header 
-        onAdd={()=> setShowAddRace(!showAddRace)}
-        showAdd={showAddRace}      
+        onAdd={()=> setShowAddCitizen(!showAddCitizen)}
+        showAdd={showAddCitizen}      
       />    
 
-      {showAddRace &&  <AddRace onAdd={addRace}/> }
+      {showAddCitizen &&  <AddCitizen onAdd={addCitizen}/> }
 
-      {tasks.length > 0 ? 
-        <Tasks tasks={tasks}
-          onDelete = {deleteTask} 
-          onToggle = {toggleReminder}
+      {citizens.length > 0 ? 
+        <Citizens 
+          citizensProp = {citizens}
+          onDelete     = {deleteCitizen} 
+          onToggle     = {toggleReminder}
         />   
         : 'No tasks to show'
       }

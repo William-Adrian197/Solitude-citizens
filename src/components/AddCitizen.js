@@ -1,24 +1,40 @@
 import { useState } from 'react'
 
-const AddRace = ({onAdd}) => {
+const AddCitizen = ({onAdd}) => {
 
+  const [name,setName] = useState('');
   const [race,setRace] = useState('');
   const [attribute,setAttribute] = useState('');
   const [cleaned,setCleaned] = useState(false);
 
   const onSubmit = (e) => {
     e.preventDefault() //prevent submit on another page 
+
+    if(!name) {
+      alert('Please add a name')
+      return
+    }
    
     if(!race) {
       alert('Please add a race')
       return
     }
 
-    onAdd({race,attribute,cleaned}) //trigger onAdd
+    onAdd({name,race,attribute,cleaned}) //trigger onAdd
   }
 
   return (
     <form className='add-form' onSubmit={onSubmit}>
+
+      <div className = 'form-control'>
+        <label>name</label>
+        <input 
+          Type='text' 
+          placeholder='Add Name' 
+          value = {name} 
+          onChange={(e)=> setName(e.target.value)}/>        
+      </div>
+
       <div className = 'form-control'>
         <label>Race</label>
         <input 
@@ -56,4 +72,4 @@ const AddRace = ({onAdd}) => {
   )
 }
 
-export default AddRace
+export default AddCitizen
