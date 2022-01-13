@@ -1,4 +1,5 @@
-import { FaTimes} from 'react-icons/fa' //npm i react-icons
+import { FaTimes } from 'react-icons/fa' //npm i react-icons
+import { Link } from 'react-router-dom'
 
 const Citizen = ({singleCitizenProp,onDelete,onToggle}) => {
   return (
@@ -11,6 +12,9 @@ const Citizen = ({singleCitizenProp,onDelete,onToggle}) => {
       <p>race: {singleCitizenProp.race}</p>
       <p>traits: {singleCitizenProp.attribute}</p>
       <p>cleaned: {singleCitizenProp.cleaned === true ?"yes":"no"}</p>
+      <p>
+        <Link to={`/citizens/${singleCitizenProp.id}`}> View Details </Link> 
+      </p>
     </div>
   )
 }

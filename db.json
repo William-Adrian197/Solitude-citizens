@@ -1,0 +1,25 @@
+{
+  "citizens": [
+    {
+      "id": 1,
+      "race": "elven",
+      "name": "Cinos Greenlock",
+      "attribute": "magic",
+      "cleaned": true
+    },
+    {
+      "id": 2,
+      "race": "nord",
+      "name": "Karlrrod Double-Fist",
+      "attribute": "balanced",
+      "cleaned": true
+    },
+    {
+      "name": "Wilstien Wiririene",
+      "race": "Breton",
+      "attribute": "Ancient Magic",
+      "cleaned": true,
+      "id": 3
+    }
+  ]
+}
